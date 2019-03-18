@@ -2,8 +2,8 @@
 An opportunity to explore how to make an EV3 Robot move.
 
 Authors: Dave Fisher, David Mutchler, Vibha Alangar,
-their colleagues, and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+their colleagues, and Yunpu Zhang.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 # -----------------------------------------------------------------------------
 # TODO: 2.
@@ -14,6 +14,7 @@ their colleagues, and PUT_YOUR_NAME_HERE.
 
 import simple_rosebotics as rb
 import time
+import simple_rosebotics as rb
 
 
 def main():
@@ -21,10 +22,11 @@ def main():
     print("Running main on the robot.")
 
     # TODO: 2. Construct a RoseBot.  Send it as an argument to other functions.
-    run_test_spin()
-    run_test_go()
-    challenge1()
-    challenge2()
+    robot=rb.RoseBot()
+    run_test_spin(robot)
+    run_test_go(robot)
+    challenge1(robot)
+    challenge2(robot)
 
 
 def run_test_spin(robot):
@@ -33,7 +35,10 @@ def run_test_spin(robot):
     for different amounts of time and with different speeds,
     with   time.sleep(2)   between each run.
       :type robot:  rb.RoseBot
+
+
     """
+    spin(robot,5,50)
     # -------------------------------------------------------------------------
     # TODO: 3. Implement this.
     # -------------------------------------------------------------------------
@@ -52,7 +57,11 @@ def spin(robot, seconds, speed):
     #
     # Use the DOT trick to figure out how to turn on and turn off motors.
     # -------------------------------------------------------------------------
-
+    robot.drive_system.left_motor.turn_on(speed)
+    robot.drive_system.right_motor.turn_on(speed)
+    time.sleep(seconds)
+    robot.drive_system.left_motor.turn_off()
+    robot.drive_system.right_motor.turn_off()
 
 def run_test_go(robot):
     """
